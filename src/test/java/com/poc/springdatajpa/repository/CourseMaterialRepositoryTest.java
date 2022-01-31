@@ -18,12 +18,12 @@ class CourseMaterialRepositoryTest {
     void saveSomeCourseMaterial() {
         Course course =
                 Course.builder()
-                        .title("Data structure and algorithms")
+                        .title("Object Oriented Programming system")
                         .credit(6)
                         .build();
         CourseMaterial courseMaterial =
                 CourseMaterial.builder()
-                        .url("www.google.com")
+                        .url("www.meta.com")
                         .course(course)
                         .build();
         courseMaterialRepository.save(courseMaterial);
@@ -31,6 +31,12 @@ class CourseMaterialRepositoryTest {
 
     @Test
     void printCourseMaterials() {
+        List<CourseMaterial> courseMaterials
+                = courseMaterialRepository.findAll();
+        System.out.println("courseMaterials = " + courseMaterials);
+    }
+    @Test
+    void printCourses() {
         List<CourseMaterial> courseMaterials
                 = courseMaterialRepository.findAll();
         System.out.println("courseMaterials = " + courseMaterials);

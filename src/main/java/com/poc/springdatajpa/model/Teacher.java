@@ -4,42 +4,35 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Course {
-
+public class Teacher {
     @Id
     @SequenceGenerator(
-            name = "course",
-            sequenceName = "course_sequence",
+            name = "teacher",
+            sequenceName = "teacher_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "course"
+            generator = "teacher"
     )
     private Long id;
-    private String title;
-    private Integer credit;
+    private String firstName;
+    private String lastName;
 
-    @OneToOne(
-            mappedBy = "course"
-    )
-    private CourseMaterial courseMaterial;
-
-    @ManyToOne(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+    /*@OneToMany(
+            cascade = CascadeType.ALL
     )
     @JoinColumn(
             name = "teacher_id",
             referencedColumnName = "id"
     )
-    private Teacher teacher;
+    private List<Course> courses;*/
 }
